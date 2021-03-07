@@ -54,8 +54,8 @@ def get_train_val_split(X_filepath, y_filepath, train_perc = 75, val_perc = 10):
     data_X = standardize(data_X)
     
     test_perc = 100 - (train_perc + val_perc)
-    train_val_X, test_X, train_val_y, test_y = train_test_split(data_X, data_y, test_size = test_perc / 100, stratify = np.argmax(data_y, axis = 1))
-    train_X, val_X, train_y, val_y = train_test_split(train_val_X, train_val_y, test_size = val_perc / (train_perc + val_perc), stratify = np.argmax(train_val_y, axis = 1))
+    train_val_X, test_X, train_val_y, test_y = train_test_split(data_X, data_y, test_size = test_perc / 100, stratify = np.argmax(data_y, axis = 1), random_state = 42)
+    train_X, val_X, train_y, val_y = train_test_split(train_val_X, train_val_y, test_size = val_perc / (train_perc + val_perc), stratify = np.argmax(train_val_y, axis = 1), random_state = 42)
     return train_X, train_y, val_X, val_y, test_X, test_y
 
 # # Sample Usage
